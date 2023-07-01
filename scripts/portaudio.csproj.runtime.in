@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0</TargetFrameworks>
+    <RuntimeIdentifier>{{ dotnet_rid }}</RuntimeIdentifier>
+    <AssemblyName>portaudio</AssemblyName>
+    <Version>{{ version }}</Version>
+
+    <PackageProjectUrl>https://github.com/csukuangfj/PortAudioSharp2</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/csukuangfj/PortAudioSharp2</RepositoryUrl>
+    <PackageTags>portaudio</PackageTags>
+
+    <!-- Nuget Properties -->
+    <Description>.NET native {{ dotnet_rid }} wrapper for portaudio.
+
+    In general, you don't need to use this package directly.
+
+    Please use https://www.nuget.org/packages/PortAudioSharp2 instead
+    </Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+
+    <!-- Pack Option -->
+    <Title>portaudio {{ dotnet_rid }} v{{ version }}</Title>
+    <PackageId>org.k2fsa.portaudio.runtime.{{ dotnet_rid }}</PackageId>
+
+    <!-- Signing -->
+    <SignAssembly>false</SignAssembly>
+    <PublicSign>false</PublicSign>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Native library must be in native directory... -->
+    <!-- If project is built as a STATIC_LIBRARY (e.g. Windows) then we don't have to include it -->
+    <Content Include="
+      {{ libs }}
+    ">
+      <PackagePath>runtimes/{{ dotnet_rid }}/native/%(Filename)%(Extension)</PackagePath>
+      <Pack>true</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
