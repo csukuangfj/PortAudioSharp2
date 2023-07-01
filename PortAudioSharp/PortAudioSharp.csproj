@@ -1,13 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0;net7.0</TargetFrameworks>
+    <RuntimeIdentifiers>linux-x64;osx-x64;win-x64</RuntimeIdentifiers>
 
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <!-- NuGet Packaging info -->
     <Title>PortAudioSharp2</Title>
-    <Description>C# friendly bindings to PortAudio</Description>
-    <Version>0.1</Version>
+    <Description>.NET native {{ dotnet_rid }} wrapper for portaudio supporting
+    Linux, macos, Windows.
+    </Description>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <Version>0.2.0</Version>
     <Authors>Benjamin N. Summerton</Authors>
     <IncludeSource>true</IncludeSource>
     <Copyright>Copyright 2019</Copyright>
@@ -27,8 +31,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="0.1" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="0.1" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="0.1" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="0.2.0" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="0.2.0" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="0.2.0" />
   </ItemGroup>
 </Project>

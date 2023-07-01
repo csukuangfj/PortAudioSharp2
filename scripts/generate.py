@@ -11,7 +11,7 @@ SHERPA_ONNX_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 def get_version():
-    return "0.1"
+    return "0.2.0"
 
 
 def read_proj_file(filename):

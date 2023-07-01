@@ -2,6 +2,8 @@
 
 C# binding for [portaudio][portaudio] supporting Linux, macOS, and Windows.
 
+See <https://www.nuget.org/packages/PortAudioSharp2>
+
 The binding code is from copied from [PortAudioSharp][PortAudioSharp].
 
 Different from [PortAudioSharp][PortAudioSharp], this project packages pre-compiled
