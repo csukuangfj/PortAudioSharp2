@@ -21,7 +21,7 @@ jobs:
         os: [windows-latest]
 
     steps:
-        shell: bash
+      - shell: bash
         run: |
           wget http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz
           tar xvf pa_stable_v190700_20210406.tgz
