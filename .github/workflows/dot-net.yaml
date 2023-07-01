@@ -1,0 +1,32 @@
+name: dot-net
+
+on:
+  push:
+    branches:
+      - dot-net
+    tags:
+      - '*'
+
+concurrency:
+  group: dot-net-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-libs:
+    name: dot-net for ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+
+    steps:
+        shell: bash
+        run: |
+          wget http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz
+          tar xvf pa_stable_v190700_20210406.tgz
+          cd portaudio
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build . --config Release

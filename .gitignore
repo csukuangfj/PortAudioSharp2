@@ -1,0 +1,5 @@
+portaudio
+*.tgz
+*.dll
+lib*.so*
+lib*dylib
