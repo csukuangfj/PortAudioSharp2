@@ -7,8 +7,6 @@ from pathlib import Path
 
 import jinja2
 
-SHERPA_ONNX_DIR = Path(__file__).resolve().parent.parent.parent
-
 
 def get_version():
     return "0.2.0"
