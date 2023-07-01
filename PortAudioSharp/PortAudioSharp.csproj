@@ -10,15 +10,15 @@
     <Description>.NET wrapper for portaudio supporting Linux, macos, Windows.
     </Description>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <Version>0.3.0</Version>
+    <Version>0.3.1</Version>
     <Authors>Benjamin N. Summerton</Authors>
     <IncludeSource>true</IncludeSource>
     <Copyright>Copyright 2019</Copyright>
     <PackageId>PortAudioSharp2</PackageId>
     <PackageLicense>Apache-2.0</PackageLicense>
-    <PackageProjectUrl>https://gitlab.com/define-private-public/Bassoon</PackageProjectUrl>
-    <PackageTags>audio music playback cross platform PortAudio port audio</PackageTags>
-    <PackageReleaseNotes>Added bindings to functions to query device count and default input device ID</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/csukuangfj/PortAudioSharp2</PackageProjectUrl>
+    <PackageTags>portaudio</PackageTags>
+    <PackageReleaseNotes>https://gitlab.com/define-private-public/Bassoon</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="0.3.0" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="0.3.0" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="0.3.0" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="0.3.1" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="0.3.1" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="0.3.1" />
   </ItemGroup>
 </Project>
