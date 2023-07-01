@@ -10,7 +10,7 @@
     <Description>.NET wrapper for portaudio supporting Linux, macos, Windows.
     </Description>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <Version>0.3.1</Version>
+    <Version>0.3.2</Version>
     <Authors>Benjamin N. Summerton</Authors>
     <IncludeSource>true</IncludeSource>
     <Copyright>Copyright 2019</Copyright>
@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="0.3.1" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="0.3.1" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="0.3.1" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="0.3.2" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="0.3.2" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="0.3.2" />
   </ItemGroup>
 </Project>

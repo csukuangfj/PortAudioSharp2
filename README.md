@@ -2,6 +2,10 @@
 
 C# binding for [portaudio][portaudio] supporting Linux, macOS, and Windows.
 
+You can find its usage for real time speech recognition from a microphone using
+[sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) at
+<https://github.com/k2-fsa/sherpa-onnx/tree/master/dotnet-examples/speech-recognition-from-microphone>
+
 See <https://www.nuget.org/packages/PortAudioSharp2>
 
 The binding code is from copied from [PortAudioSharp][PortAudioSharp].
