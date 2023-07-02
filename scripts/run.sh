@@ -4,6 +4,7 @@
 set -ex
 
 mkdir -p macos linux windows all
+rm -rf packages
 
 cp -v ./libportaudio.dylib ./macos
 cp -v ./libportaudio.so ./linux
