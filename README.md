@@ -8,12 +8,12 @@ You can find its usage for real time speech recognition from a microphone using
 
 See <https://www.nuget.org/packages/PortAudioSharp2>
 
-The binding code is from copied from [PortAudioSharp][PortAudioSharp].
+The binding code is copied from [PortAudioSharp][PortAudioSharp].
 
 Different from [PortAudioSharp][PortAudioSharp], this project packages pre-compiled
 [portaudio][portaudio] into the `nuget` package, which simplifies user's life.
 
-It's worth mentioning again that the binding code is copied from
+It's worth mentioning again that the binding code is copied
 directly from [PortAudioSharp][PortAudioSharp].
 
 [PortAudioSharp]: https://gitlab.com/define-private-public/Bassoon/-/tree/develop/src/Bassoon/PortAudioSharp
