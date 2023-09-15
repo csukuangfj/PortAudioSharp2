@@ -2,6 +2,7 @@
 // Author:      Benjamin N. Summerton <https://16bpp.net>
 
 using System;
+using System.Text;
 using System.Runtime.InteropServices;
 
 using HostApiIndex = System.Int32;
@@ -35,5 +36,24 @@ namespace PortAudioSharp
         public Time defaultHighOutputLatency;
 
         public double defaultSampleRate;
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("DeviceInfo [");
+            sb.AppendLine($"  structVersion={structVersion}");
+            sb.AppendLine($"  name={name}");
+            sb.AppendLine($"  hostApi={hostApi}");
+            sb.AppendLine($"  maxInputChannels={maxInputChannels}");
+            sb.AppendLine($"  maxOutputChannels={maxOutputChannels}");
+            sb.AppendLine($"  defaultSampleRate={defaultSampleRate}");
+            sb.AppendLine($"  defaultLowInputLatency={defaultLowInputLatency}");
+            sb.AppendLine($"  defaultLowOutputLatency={defaultLowOutputLatency}");
+            sb.AppendLine($"  defaultHighInputLatency={defaultHighInputLatency}");
+            sb.AppendLine($"  defaultHighOutputLatency={defaultHighOutputLatency}");
+            sb.AppendLine($"  defaultHighSampleRate={defaultSampleRate}");
+            sb.AppendLine("]");
+            return sb.ToString();
+        }
     }
 }
