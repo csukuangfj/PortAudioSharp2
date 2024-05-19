@@ -68,6 +68,9 @@ namespace PortAudioSharp
         public static extern ErrorCode Pa_IsStreamActive(IntPtr stream);    // `PaStream *`
 
         [DllImport(PortAudioDLL)]
+        public static extern double Pa_GetStreamTime(IntPtr stream);        // `PaStream *`
+
+        [DllImport(PortAudioDLL)]
         public static extern double Pa_GetStreamCpuLoad(IntPtr stream);     // `PaStream *`
     }
 
@@ -386,6 +389,28 @@ namespace PortAudioSharp
                 else
                     throw new PortAudioException(ec, "Error checking if PortAudio Stream is active");
             }
+        }
+
+        /// <summary>
+        /// Returns the current time in seconds for a stream according to the same clock
+        /// used to generate callback PaStreamCallbackTimeInfo timestamps. The time values
+        /// are monotonically increasing and have unspecified origin.
+        ///
+        /// Pa_GetStreamTime returns valid time values for the entire life of the stream,
+        /// from when the stream is opened until it is closed. Starting and stopping the
+        /// stream does not affect the passage of time returned by Pa_GetStreamTime.
+        ///
+        /// This time may be used for synchronizing other events to the audio stream,
+        /// for example synchronizing audio to MIDI.
+        ///
+        /// @return
+        /// The stream's current time in seconds, or 0 if an error occurred.
+        ///
+        /// @see PaTime, PaStreamCallback, PaStreamCallbackTimeInfo
+        /// </summary>
+        public double Time
+        {
+            get => Native.Pa_GetStreamTime(streamPtr);
         }
 
         /// <summary>
