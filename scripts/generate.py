@@ -9,7 +9,7 @@ import jinja2
 
 
 def get_version():
-    return "1.0.0"
+    return "1.0.1"
 
 
 def read_proj_file(filename):
