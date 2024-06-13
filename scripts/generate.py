@@ -9,7 +9,7 @@ import jinja2
 
 
 def get_version():
-    return "1.0.1"
+    return "1.0.2"
 
 
 def read_proj_file(filename):
@@ -38,17 +38,17 @@ def process_linux(s):
         f.write(s)
 
 
-def process_macos(s):
+def process_macos(s, arch):
     libs = "libportaudio.dylib"
 
     d = get_dict()
-    d["dotnet_rid"] = "osx-x64"
+    d["dotnet_rid"] = f"osx-{arch}"
     d["libs"] = libs
 
     environment = jinja2.Environment()
     template = environment.from_string(s)
     s = template.render(**d)
-    with open("./macos/portaudio.runtime.csproj", "w") as f:
+    with open(f"./macos-{arch}/portaudio.runtime.csproj", "w") as f:
         f.write(s)
 
 
@@ -68,7 +68,8 @@ def process_windows(s):
 
 def main():
     s = read_proj_file("./portaudio.csproj.runtime.in")
-    process_macos(s)
+    process_macos(s, "x64")
+    process_macos(s, "arm64")
     process_linux(s)
     process_windows(s)
 
