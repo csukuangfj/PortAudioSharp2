@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netcoreapp3.1;net6.0;net7.0</TargetFrameworks>
-    <RuntimeIdentifiers>linux-x64;osx-x64;win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>linux-x64;osx-x64;osx-arm64;win-x64</RuntimeIdentifiers>
 
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <!-- NuGet Packaging info -->
@@ -31,6 +31,7 @@
   <ItemGroup>
     <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="1.0.2" />
     <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="1.0.2" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-arm64" Version="1.0.2" />
     <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="1.0.2" />
   </ItemGroup>
 </Project>

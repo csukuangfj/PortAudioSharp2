@@ -3,10 +3,11 @@
 
 set -ex
 
-mkdir -p macos linux windows all
+mkdir -p macos-x64 macos-arm64 linux windows all
 rm -rf packages
 
-cp -v ./libportaudio.dylib ./macos
+cp -v ./libportaudio.dylib ./macos-x64
+cp -v ./libportaudio.dylib ./macos-arm64
 cp -v ./libportaudio.so ./linux
 cp -v ./portaudio.dll ./windows
 
@@ -17,7 +18,12 @@ dotnet build -c Release
 dotnet pack -c Release -o ../../PortAudioSharp/packages
 popd
 
-pushd macos
+pushd macos-x64
+dotnet build -c Release
+dotnet pack -c Release -o ../../PortAudioSharp/packages
+popd
+
+pushd macos-arm64
 dotnet build -c Release
 dotnet pack -c Release -o ../../PortAudioSharp/packages
 popd
