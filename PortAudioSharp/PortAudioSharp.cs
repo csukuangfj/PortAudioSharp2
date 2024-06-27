@@ -220,8 +220,53 @@ namespace PortAudioSharp
         ///
         /// @see PaDeviceInfo, PaDeviceIndex
         /// </summary>
-        public static DeviceInfo GetDeviceInfo(DeviceIndex device) =>
-            Marshal.PtrToStructure<DeviceInfo>(Native.Pa_GetDeviceInfo(device));
+        public static DeviceInfo GetDeviceInfo(DeviceIndex device)
+        {
+            var info = Marshal.PtrToStructure<DeviceInfoData>(Native.Pa_GetDeviceInfo(device));
+            DeviceInfo ans = new DeviceInfo();
+
+            ans.structVersion = info.structVersion;
+            ans.name = GetDeviceName(info.name);
+            ans.hostApi = info.hostApi;
+            ans.maxInputChannels = info.maxInputChannels;
+            ans.maxOutputChannels = info.maxOutputChannels;
+            ans.defaultLowInputLatency = info.defaultLowInputLatency;
+            ans.defaultLowOutputLatency = info.defaultLowOutputLatency;
+            ans.defaultHighInputLatency = info.defaultHighInputLatency;
+            ans.defaultHighOutputLatency = info.defaultHighOutputLatency;
+            ans.defaultSampleRate = info.defaultSampleRate;
+
+            return ans;
+        }
+
+        private static string GetDeviceName(IntPtr name)
+        {
+            string s = "";
+            if (name != IntPtr.Zero)
+            {
+                int length = 0;
+                unsafe
+                {
+                    byte* b = (byte*)name;
+                    if (b != null)
+                    {
+                        while (*b != 0)
+                        {
+                            ++b;
+                            length += 1;
+                        }
+                    }
+                }
+
+                if (length > 0)
+                {
+                    byte[] stringBuffer = new byte[length];
+                    Marshal.Copy(name, stringBuffer, 0, length);
+                    s = Encoding.UTF8.GetString(stringBuffer);
+                }
+            }
+            return s;
+        }
 
         /// <summary>
         /// Retrieve the number of available devices. The number of available devices
