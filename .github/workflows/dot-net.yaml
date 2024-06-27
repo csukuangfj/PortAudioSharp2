@@ -7,6 +7,8 @@ on:
     tags:
       - '*'
 
+  workflow_dispatch:
+
 concurrency:
   group: dot-net-${{ github.ref }}
   cancel-in-progress: true
