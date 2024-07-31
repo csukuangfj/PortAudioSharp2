@@ -31,9 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="1.0.3" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="1.0.3" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-arm64" Version="1.0.3" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="1.0.3" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="1.0.4" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="1.0.4" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-arm64" Version="1.0.4" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="1.0.4" />
   </ItemGroup>
 </Project>

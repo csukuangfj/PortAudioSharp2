@@ -9,7 +9,7 @@ import jinja2
 
 
 def get_version():
-    return "1.0.3"
+    return "1.0.4"
 
 
 def read_proj_file(filename):
@@ -51,6 +51,7 @@ def process_macos(s, arch):
     with open(f"./macos-{arch}/portaudio.runtime.csproj", "w") as f:
         f.write(s)
 
+
 def process_ios(s):
     libs = "libportaudio.a"
 
@@ -63,6 +64,7 @@ def process_ios(s):
     s = template.render(**d)
     with open(f"./ios-arm64/portaudio.runtime.ios.csproj", "w") as f:
         f.write(s)
+
 
 def process_windows(s):
     libs = "portaudio.dll"
