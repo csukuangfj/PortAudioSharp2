@@ -12,8 +12,12 @@ namespace PortAudioSharp
 {
     internal static partial class Native
     {
-        public const string PortAudioDLL = "portaudio";
-
+        #if !IOS
+            public const string PortAudioDLL = "portaudio";
+        #else
+            public const string PortAudioDLL = "__Internal";
+        #endif
+        
         [DllImport(PortAudioDLL)]
         public static extern int Pa_GetVersion();
 

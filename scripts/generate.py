@@ -51,6 +51,18 @@ def process_macos(s, arch):
     with open(f"./macos-{arch}/portaudio.runtime.csproj", "w") as f:
         f.write(s)
 
+def process_ios(s):
+    libs = "libportaudio.a"
+
+    d = get_dict()
+    d["dotnet_rid"] = f"ios-arm64"
+    d["libs"] = libs
+
+    environment = jinja2.Environment()
+    template = environment.from_string(s)
+    s = template.render(**d)
+    with open(f"./ios-arm64/portaudio.runtime.ios.csproj", "w") as f:
+        f.write(s)
 
 def process_windows(s):
     libs = "portaudio.dll"
@@ -72,6 +84,7 @@ def main():
     process_macos(s, "arm64")
     process_linux(s)
     process_windows(s)
+    process_ios(s)
 
 
 if __name__ == "__main__":
