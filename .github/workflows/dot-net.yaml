@@ -53,6 +53,8 @@ jobs:
         run: |
           cd scripts/
           # dotnet workload install wasm-tools-net7
+          dotnet workload install ios
+
           ./run.sh
           ls -lh packages
 
