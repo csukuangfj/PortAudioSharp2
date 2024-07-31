@@ -20,15 +20,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [macos-latest]
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup .NET Core 3.1
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.x
+      # - name: Setup .NET Core 3.1
+      #   uses: actions/setup-dotnet@v1
+      #   with:
+      #     dotnet-version: 3.1.x
 
       - name: Setup .NET 7.0
         uses: actions/setup-dotnet@v1
@@ -38,10 +38,23 @@ jobs:
       - name: Check dotnet
         run: dotnet --info
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          python3 -m pip install --upgrade pip jinja2
+
       - name: build nuget packages
         shell: bash
         run: |
           cd scripts/
+          # dotnet workload install wasm-tools-net7
+          dotnet workload install ios
+
           ./run.sh
           ls -lh packages
 
