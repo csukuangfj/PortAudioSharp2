@@ -3,7 +3,8 @@
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <OutputType>Library</OutputType>
-    <TargetFrameworks>net7.0-ios14.5</TargetFrameworks>
+    <TargetFrameworks>net8.0;net8.0-ios17.0</TargetFrameworks>
+
     <RuntimeIdentifier>{{ dotnet_rid }}</RuntimeIdentifier>
     <AssemblyName>portaudio</AssemblyName>
     <Version>{{ version }}</Version>

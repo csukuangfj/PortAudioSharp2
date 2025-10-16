@@ -1,4 +1,7 @@
-linux
-windows
-macos
+linux-arm64
+linux-x64
+windows-x64
+macos-x64
+macos-arm64
+ios-arm64
 packages
