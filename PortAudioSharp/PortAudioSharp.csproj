@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net7.0-ios14.5;netstandard2.0;netcoreapp3.1;net6.0;net7.0</TargetFrameworks>
-    <RuntimeIdentifiers Condition="'$(TargetFramework)' != 'net7.0-ios14.5'">linux-x64;osx-x64;osx-arm64;win-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers Condition="'$(TargetFramework)' != 'net7.0-ios14.5'">linux-x64;linux-arm64;osx-x64;osx-arm64;win-x64</RuntimeIdentifiers>
     <RuntimeIdentifier Condition="'$(TargetFramework)' == 'net7.0-ios14.5'">ios-arm64</RuntimeIdentifier>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 
@@ -11,7 +11,7 @@
     <Title>PortAudioSharp2</Title>
     <Description>.NET wrapper for portaudio supporting Linux, macos, Windows.
     </Description>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>Benjamin N. Summerton</Authors>
     <IncludeSource>true</IncludeSource>
     <Copyright>Copyright 2019</Copyright>
@@ -31,9 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="1.0.4" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="1.0.4" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-arm64" Version="1.0.4" />
-    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="1.0.4" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-x64" Version="1.0.5" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.linux-arm64" Version="1.0.5" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-x64"   Version="1.0.5" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.osx-arm64" Version="1.0.5" />
+    <PackageReference Include="org.k2fsa.portaudio.runtime.win-x64"   Version="1.0.5" />
   </ItemGroup>
 </Project>

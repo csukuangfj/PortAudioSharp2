@@ -23,7 +23,7 @@ jobs:
         os: [macos-latest]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       # - name: Setup .NET Core 3.1
       #   uses: actions/setup-dotnet@v1
@@ -58,7 +58,7 @@ jobs:
           ./run.sh
           ls -lh packages
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         name: upload nuget packages
         with:
           name: nuget-packages

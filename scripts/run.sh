@@ -3,18 +3,24 @@
 
 set -ex
 
-mkdir -p macos-x64 macos-arm64 ios-arm64 linux windows all
+mkdir -p macos-x64 macos-arm64 ios-arm64 linux-x64 linux-arm64 windows-x64 all
 rm -rf packages
 
 cp -v ./libportaudio.dylib ./macos-x64
 cp -v ./libportaudio.dylib ./macos-arm64
 cp -v ./libportaudio.a ./ios-arm64
-cp -v ./libportaudio.so ./linux
-cp -v ./portaudio.dll ./windows
+cp -v ./libportaudio.so ./linux-x64
+cp -v ./linux-arm64-lib/libportaudio.so ./linux-arm64/
+cp -v ./portaudio.dll ./windows-x64
 
 ./generate.py
 
-pushd linux
+pushd linux-x64
+dotnet build -c Release
+dotnet pack -c Release -o ../../PortAudioSharp/packages
+popd
+
+pushd linux-arm64
 dotnet build -c Release
 dotnet pack -c Release -o ../../PortAudioSharp/packages
 popd
@@ -34,7 +40,7 @@ dotnet build -c Release
 dotnet pack -c Release -o ../../PortAudioSharp/packages
 popd
 
-pushd windows
+pushd windows-x64
 dotnet build -c Release
 dotnet pack -c Release -o ../../PortAudioSharp/packages
 popd
