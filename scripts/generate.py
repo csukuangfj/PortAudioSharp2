@@ -9,7 +9,7 @@ import jinja2
 
 
 def get_version():
-    return "1.0.5"
+    return "1.0.6"
 
 
 def read_proj_file(filename):
@@ -29,6 +29,9 @@ def process_linux(s, arch):
 
     d = get_dict()
     d["dotnet_rid"] = f"linux-{arch}"
+    d["dotnet_rid2"] = f"linux-{arch}"
+    if arch == "arm64":
+        d["dotnet_rid2"] = f"linux-aarch64"
     d["libs"] = libs
 
     environment = jinja2.Environment()
@@ -43,6 +46,7 @@ def process_macos(s, arch):
 
     d = get_dict()
     d["dotnet_rid"] = f"osx-{arch}"
+    d["dotnet_rid2"] = f"osx-{arch}"
     d["libs"] = libs
 
     environment = jinja2.Environment()
@@ -57,6 +61,7 @@ def process_ios(s):
 
     d = get_dict()
     d["dotnet_rid"] = f"ios-arm64"
+    d["dotnet_rid2"] = f"ios-arm64"
     d["libs"] = libs
 
     environment = jinja2.Environment()
@@ -71,6 +76,7 @@ def process_windows(s, arch):
 
     d = get_dict()
     d["dotnet_rid"] = f"win-{arch}"
+    d["dotnet_rid2"] = f"win-{arch}"
     d["libs"] = libs
 
     environment = jinja2.Environment()

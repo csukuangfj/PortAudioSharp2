@@ -23,7 +23,7 @@
 
     <!-- Pack Option -->
     <Title>portaudio {{ dotnet_rid }} v{{ version }}</Title>
-    <PackageId>org.k2fsa.portaudio.runtime.{{ dotnet_rid }}</PackageId>
+    <PackageId>org.k2fsa.portaudio.runtime.{{ dotnet_rid2 }}</PackageId>
 
     <!-- Signing -->
     <SignAssembly>false</SignAssembly>
