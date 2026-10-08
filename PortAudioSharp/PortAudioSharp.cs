@@ -49,6 +49,12 @@ namespace PortAudioSharp
 
         [DllImport(PortAudioDLL)]
         public static extern void Pa_Sleep(System.Int32 msec);
+
+        // Update code by Marcus Dudley <marcus @ nicsure . co . uk> to include Host API information - START
+        [DllImport(PortAudioDLL)]
+        public static extern IntPtr Pa_GetHostApiInfo(int hostApi);
+        // Update code by Marcus Dudley <marcus @ nicsure . co . uk> to include Host API information - END
+
     }
 
     public static class PortAudio
@@ -210,6 +216,40 @@ namespace PortAudioSharp
         {
             get => Native.Pa_GetDefaultInputDevice();
         }
+
+        // Update code by Marcus Dudley <marcus @ nicsure . co . uk> to include Host API information - START
+        /// <summary>
+        /// Retrieve a pointer to a PaHostApiInfo structure containing information
+        /// about the specified API.
+        /// @return A pointer to an immutable PaHostApiInfo structure. If the hostApi
+        /// parameter is out of range the function returns NULL.
+        ///
+        /// @param hostApi A valid host API index in the range 0 to (Pa_GetHostApiCount()-1)
+        ///
+        /// @note PortAudio manages the memory referenced by the returned pointer,
+        /// the client must not manipulate or free the memory. The pointer is only
+        /// guaranteed to be valid between calls to Pa_Initialize() and Pa_Terminate().
+        ///
+        /// @see PaHostApiInfo, PaHostApiIndex
+        /// </summary>
+        public static HostApiInfo GetHostApiInfo(int hostApi)
+        {
+            var info = Marshal.PtrToStructure<HostApiInfoData>(
+                Native.Pa_GetHostApiInfo(hostApi));
+
+            HostApiInfo ans = new HostApiInfo();
+
+            ans.structVersion = info.structVersion;
+            ans.type = info.type;
+            ans.name = GetDeviceName(info.name);
+            ans.deviceCount = info.deviceCount;
+            ans.defaultInputDevice = info.defaultInputDevice;
+            ans.defaultOutputDevice = info.defaultOutputDevice;
+
+            return ans;
+        }
+        // Update code by Marcus Dudley <marcus @ nicsure . co . uk> to include Host API information - END
+
 
         /// <summary>
         /// Retrieve a pointer to a PaDeviceInfo structure containing information

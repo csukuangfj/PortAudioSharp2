@@ -3,3 +3,4 @@ portaudio
 *.dll
 lib*.so*
 lib*dylib
+.vs/
