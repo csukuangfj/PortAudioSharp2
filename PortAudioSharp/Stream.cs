@@ -72,6 +72,9 @@ namespace PortAudioSharp
 
         [DllImport(PortAudioDLL)]
         public static extern double Pa_GetStreamCpuLoad(IntPtr stream);     // `PaStream *`
+
+        [DllImport(PortAudioDLL)]
+        public static extern IntPtr Pa_GetStreamInfo(IntPtr stream);        // `PaStream *`, returns `const PaStreamInfo *`
     }
 
     /// <summary>
@@ -88,7 +91,7 @@ namespace PortAudioSharp
     ///
     /// @see Pa_OpenStream, Pa_OpenDefaultStream, Pa_OpenDefaultStream, Pa_CloseStream,
     /// Pa_StartStream, Pa_StopStream, Pa_AbortStream, Pa_IsStreamActive,
-    /// Pa_GetStreamTime, Pa_GetStreamCpuLoad
+    /// Pa_GetStreamTime, Pa_GetStreamCpuLoad, Pa_GetStreamInfo
     /// </summary>
     public class Stream : IDisposable
     {
@@ -433,6 +436,31 @@ namespace PortAudioSharp
         public double CpuLoad
         {
             get => Native.Pa_GetStreamCpuLoad(streamPtr);
+        }
+
+        /// <summary>
+        /// Retrieve a <see cref="StreamInfo"/> structure containing information about the
+        /// stream: the actual input/output latency the host API granted (as opposed to the
+        /// <c>suggestedLatency</c> passed when opening) and the actual sample rate.
+        ///
+        /// PortAudio owns the native `PaStreamInfo` and keeps it valid until the stream is
+        /// closed, so this property copies it out into a managed struct; the copy stays
+        /// usable after the stream is disposed. The latency values do not change while the
+        /// stream is open, so reading once after opening (or after Start) is enough.
+        ///
+        /// @throws PortAudioException with <see cref="ErrorCode.BadStreamPtr"/> if
+        /// PortAudio does not recognise the stream (e.g. it has already been closed).
+        /// </summary>
+        public StreamInfo Info
+        {
+            get
+            {
+                IntPtr infoPtr = Native.Pa_GetStreamInfo(streamPtr);
+                if (infoPtr == IntPtr.Zero)
+                    throw new PortAudioException(ErrorCode.BadStreamPtr, "Error retrieving info for PortAudio Stream");
+
+                return Marshal.PtrToStructure<StreamInfo>(infoPtr);
+            }
         }
         #endregion Properties
 
